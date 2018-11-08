@@ -43,22 +43,22 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Feed>) : CommonAdap
      */
     private fun setItem(holder: ViewHolder, itemData: HomeBean.Feed) {
 
-        var avatar_icon = itemData?.site?.icon
-        var avatar_name = itemData?.site?.name
+        var avatar_icon = itemData.site.icon
+        var avatar_name = itemData.site.name
 
         // 如果提供者信息为空，就显示默认
-        if (itemData?.images.isEmpty()) {
+        if (itemData.images.isEmpty()) {
             holder.getView<ImageView>(R.id.iv_home_recommend).setImageResource(R.color.placeholder_color)
         } else {
             GlideApp.with(mContext)
-                .load("https://photo.tuchong.com/" + itemData?.images[0].user_id + "/f/" + itemData?.images[0].img_id + ".jpg")
+                .load("https://photo.tuchong.com/" + itemData.images[0].user_id + "/f/" + itemData.images[0].img_id + ".jpg")
                 .placeholder(R.color.placeholder_color).centerCrop()
                 .transition(DrawableTransitionOptions().crossFade())
                 .into(holder.getView(R.id.iv_home_recommend))
         }
 
         // 如果提供者信息为空，就显示默认
-        if (avatar_icon.isNullOrEmpty()) {
+        if (avatar_icon.isEmpty()) {
             GlideApp.with(mContext)
             holder.getView<ImageView>(R.id.iv_avatar).setImageResource(R.color.placeholder_color)
         } else {
@@ -69,17 +69,20 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Feed>) : CommonAdap
                 .into(holder.getView(R.id.iv_avatar))
         }
 
-        if (!avatar_name.isNullOrEmpty()) {
+        if (!avatar_name.isEmpty()) {
             holder.setText(R.id.tv_title, avatar_name)
         }
 
-        if(itemData?.image_count==0&&!itemData?.title_image.url.isNullOrEmpty()){
+        if(itemData.image_count ==0&&!itemData.title_image.url.isEmpty()){
             GlideApp.with(mContext)
-                .load(itemData?.title_image.url)
+                .load(itemData.title_image.url)
                 .placeholder(R.color.placeholder_color).centerCrop()
                 .transition(DrawableTransitionOptions().crossFade())
                 .into(holder.getView(R.id.iv_home_recommend))
         }
+
+        holder.setText(R.id.tv_favorites,itemData.favorites.toString())
+        holder.setText(R.id.tv_comments,itemData.comments.toString())
 
 //         holder.setOnItemClickListener(listener = View.OnClickListener {
 //             goToVideoPlayer(mContext as Activity, holder.getView(R.id.iv_cover_feed), item)

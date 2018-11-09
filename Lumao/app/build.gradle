@@ -99,4 +99,5 @@ dependencies {
     }
     //butterknife
     implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation "com.github.dcampogiani:underlinepageindicator:0.0.1" //pager指示器
 }

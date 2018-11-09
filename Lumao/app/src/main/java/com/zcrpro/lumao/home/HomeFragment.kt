@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.home_fragment.*
 class HomeFragment : BaseFragment(), HomeContract.View {
 
     private var page: Int = 1
-    private var mTitle: String? = null
+    var mTitle: String? = null
 
     private var isRefresh = false
     private var mMaterialHeader: MaterialHeader? = null

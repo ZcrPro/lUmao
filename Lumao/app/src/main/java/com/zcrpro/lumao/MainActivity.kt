@@ -7,7 +7,7 @@ import android.view.KeyEvent
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.hazz.kotlinmvp.base.BaseActivity
-import com.zcrpro.lumao.home.HomeFragment
+import com.zcrpro.lumao.home.pager.HomePagerFragment
 import com.zcrpro.lumao.mine.MineFragment
 import com.zcrpro.lumao.tab.TabEntity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,7 +31,7 @@ class MainActivity : BaseActivity() {
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
 
-    private var mHomeFragment: HomeFragment? = null
+    private var mHomePagerFragment: HomePagerFragment? = null
     private var mMineFragment: MineFragment? = null
 
     //默认为0
@@ -80,11 +80,11 @@ class MainActivity : BaseActivity() {
         hideFragments(transaction)
         when (position) {
             0 // 首页
-            -> mHomeFragment?.let {
+            -> mHomePagerFragment?.let {
                 transaction.show(it)
-            } ?: HomeFragment.getInstance(mTitles[position]).let {
-                mHomeFragment = it
-                transaction.add(R.id.fl_container, it, "home")
+            } ?: HomePagerFragment.getInstance(mTitles[position]).let {
+                mHomePagerFragment = it
+                transaction.add(R.id.fl_container, it, "homepager")
             }
             1  //发现
             -> mMineFragment?.let {
@@ -109,7 +109,7 @@ class MainActivity : BaseActivity() {
      * @param transaction transaction
      */
     private fun hideFragments(transaction: FragmentTransaction) {
-        mHomeFragment?.let { transaction.hide(it) }
+        mHomePagerFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }
     }
 

@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import cn.bmob.v3.Bmob
 import com.hazz.kotlinmvp.utils.DisplayManager
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -22,6 +23,8 @@ import kotlin.properties.Delegates
 class MyApplication : Application(){
 
     private var refWatcher: RefWatcher? = null
+
+    private val APPID_BMO = "d06035d8a8bfdb526d9f969a77855693"
 
     companion object {
 
@@ -44,8 +47,8 @@ class MyApplication : Application(){
         initConfig()
         DisplayManager.init(this)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
-
-
+        //初始化bmob
+        Bmob.initialize(this, APPID_BMO)
     }
 
     private fun setupLeakCanary(): RefWatcher {
@@ -53,7 +56,6 @@ class MyApplication : Application(){
             RefWatcher.DISABLED
         } else LeakCanary.install(this)
     }
-
 
     /**
      * 初始化配置
@@ -103,6 +105,4 @@ class MyApplication : Application(){
             Log.d(TAG, "onDestroy: " + activity.componentName.className)
         }
     }
-
-
 }

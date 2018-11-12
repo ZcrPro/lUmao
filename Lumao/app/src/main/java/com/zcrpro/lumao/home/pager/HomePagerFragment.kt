@@ -1,29 +1,17 @@
 package com.zcrpro.lumao.home.pager
 
-import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import android.support.design.widget.TabItem
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
-import android.view.View
-import android.widget.TextView
 import com.hazz.kotlinmvp.base.BaseFragment
 import com.zcrpro.lumao.MyApplication
 import com.zcrpro.lumao.R
 import com.zcrpro.lumao.home.HomeFragment
 import com.zcrpro.lumao.home.adapter.HomePagerAdapter
 import com.zcrpro.lumao.home.attention.HomeAttentionFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.home_pager_fragment.*
-import kotlinx.android.synthetic.main.home_pager_fragment.view.*
-import java.lang.ref.WeakReference
-import kotlin.jvm.internal.Ref
 
+
+@Suppress("DEPRECATION")
 class HomePagerFragment : BaseFragment() {
 
     var mTitle: String? = null
@@ -64,7 +52,7 @@ class HomePagerFragment : BaseFragment() {
         }
     }
 
-    fun getColor(colorId: Int): Int {
+    private fun getColor(colorId: Int): Int {
         return resources.getColor(colorId)
     }
 }

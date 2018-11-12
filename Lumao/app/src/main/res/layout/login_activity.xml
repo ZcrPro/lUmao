@@ -2,17 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:orientation="vertical"
+              android:background="@mipmap/login_bg"
               android:layout_height="match_parent">
 
-    <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-    <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        <ImageView
+                android:src="@mipmap/logo_mobile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+
+        <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+        <ImageView
+                android:src="@mipmap/logo_password"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+
+        <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
 
     <Button
             android:id="@+id/ok"

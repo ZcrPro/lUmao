@@ -1,9 +1,13 @@
 package com.zcrpro.lumao.mine
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.hazz.kotlinmvp.base.BaseFragment
 import com.zcrpro.lumao.R
+import com.zcrpro.lumao.login.LoginActivity
+import kotlinx.android.synthetic.main.mine_fragment.*
 
 @Suppress("DEPRECATION")
 /**
@@ -16,6 +20,7 @@ class MineFragment : BaseFragment() {
     private var mTitle: String? = null
 
     override fun initView() {
+        tv_login.setOnClickListener { startActivity(Intent(activity,LoginActivity::class.java)) }
     }
 
     override fun lazyLoad() {

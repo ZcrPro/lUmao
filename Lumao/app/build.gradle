@@ -99,5 +99,12 @@ dependencies {
     }
     //butterknife
     implementation 'com.jakewharton:butterknife:7.0.1'
-    implementation "com.github.dcampogiani:underlinepageindicator:0.0.1" //pager指示器
+    //pager指示器
+    implementation 'com.github.dcampogiani:underlinepageindicator:0.0.1'
+    //bmob相关
+    implementation project(':bmob_library')
+    configurations {
+        all*.exclude group: 'com.google.code.gson'
+        all*.exclude group: 'com.squareup.okio'
+    }
 }

@@ -27,10 +27,10 @@
             android:layout_height="match_parent"/>
 
     <LinearLayout
+            android:layout_above="@+id/iv_wechat"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
-            android:layout_marginBottom="40dp"
-            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -54,6 +54,21 @@
                 android:background="@drawable/login_btn"
                 android:layout_width="70dp"
                 android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:id="@+id/iv_wechat"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <ImageView
+            android:src="@mipmap/login_wechat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
     </LinearLayout>
 

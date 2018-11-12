@@ -1,50 +1,39 @@
 package com.zcrpro.lumao.login;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
-import com.zcrpro.bmob.bean.YjUser;
+import com.zcrpro.lumao.MainActivity;
 import com.zcrpro.lumao.R;
+import com.zcrpro.lumao.login.adapter.SplashAdapter;
+import com.zcrpro.lumao.login.scroll.ScollLinearLayoutManager;
 
 public class LoginActivity extends Activity {
 
-    @Bind(R.id.username)
-    EditText username;
-    @Bind(R.id.password)
-    EditText password;
-    @Bind(R.id.ok)
-    Button ok;
+
+    @Bind(R.id.mRecyclerView)
+    RecyclerView mRecyclerView;
+    @Bind(R.id.app_name)
+    TextView appName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                YjUser yjUser = new YjUser();
-                yjUser.setUserName(username.getText().toString().trim());
-                yjUser.setNickName(password.getText().toString().trim());
-                yjUser.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String s, BmobException e) {
-                        if (e == null) {
-                            Log.i("bmob", "成功：" + s);
-                        } else {
-                            Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
-                        }
-                    }
-                });
-            }
-        });
+
+        mRecyclerView = findViewById(R.id.mRecyclerView);
+        mRecyclerView.setAdapter(new SplashAdapter(LoginActivity.this));
+        mRecyclerView.setLayoutManager(new ScollLinearLayoutManager(LoginActivity.this));
+
+        //smoothScrollToPosition滚动到某个位置（有滚动效果）
+        mRecyclerView.smoothScrollToPosition(Integer.MAX_VALUE / 2);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF");
+        appName.setTypeface(typeface);
     }
 }

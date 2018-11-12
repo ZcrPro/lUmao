@@ -1,44 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:orientation="vertical"
-              android:background="@mipmap/login_bg"
-              android:layout_height="match_parent">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-        <ImageView
-                android:src="@mipmap/logo_mobile"
-                android:layout_width="35dp"
-                android:layout_height="35dp"/>
-
-        <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-        <ImageView
-                android:src="@mipmap/logo_password"
-                android:layout_width="35dp"
-                android:layout_height="35dp"/>
-
-        <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-    </RelativeLayout>
-
-
-    <Button
-            android:id="@+id/ok"
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:clickable="true"/>
+
+    <TextView
+            android:layout_marginTop="50dp"
+            android:gravity="center|top"
+            android:id="@+id/app_name"
+            android:textSize="28sp"
+            android:text="影记"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    <LinearLayout
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="注册"
+                android:background="@drawable/login_btn_register"
+                android:layout_width="70dp"
+                android:layout_height="40dp"/>
+
+        <TextView
+                android:textColor="@color/color_black"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="登录"
+                android:background="@drawable/login_btn"
+                android:layout_width="70dp"
+                android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

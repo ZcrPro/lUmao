@@ -7,6 +7,7 @@ import android.view.KeyEvent
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.hazz.kotlinmvp.base.BaseActivity
+import com.zcrpro.lumao.discover.DiscoverFragment
 import com.zcrpro.lumao.home.pager.HomePagerFragment
 import com.zcrpro.lumao.mine.MineFragment
 import com.zcrpro.lumao.tab.TabEntity
@@ -22,16 +23,17 @@ import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    private val mTitles = arrayOf("每日精选", "我的")
+    private val mTitles = arrayOf("每日精选","发现", "我的")
 
     // 未被选中的图标
-    private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal, R.mipmap.ic_mine_normal)
+    private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal,R.mipmap.ic_discovery_normal, R.mipmap.ic_mine_normal)
     // 被选中的图标
-    private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_mine_selected)
+    private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected,R.mipmap.ic_discovery_selected,R.mipmap.ic_mine_selected)
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
 
     private var mHomePagerFragment: HomePagerFragment? = null
+    private var mDiscoverFragment: DiscoverFragment? = null
     private var mMineFragment: MineFragment? = null
 
     //默认为0
@@ -79,15 +81,19 @@ class MainActivity : BaseActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         hideFragments(transaction)
         when (position) {
-            0 // 首页
-            -> mHomePagerFragment?.let {
+            0 -> mHomePagerFragment?.let {
                 transaction.show(it)
             } ?: HomePagerFragment.getInstance(mTitles[position]).let {
                 mHomePagerFragment = it
                 transaction.add(R.id.fl_container, it, "homepager")
             }
-            1  //发现
-            -> mMineFragment?.let {
+            1 -> mDiscoverFragment?.let {
+                transaction.show(it)
+            } ?: DiscoverFragment.getInstance(mTitles[position]).let {
+                mDiscoverFragment = it
+                transaction.add(R.id.fl_container, it, "discover")
+            }
+            2 -> mMineFragment?.let {
                 transaction.show(it)
             } ?: MineFragment.getInstance(mTitles[position]).let {
                 mMineFragment = it
@@ -110,6 +116,7 @@ class MainActivity : BaseActivity() {
      */
     private fun hideFragments(transaction: FragmentTransaction) {
         mHomePagerFragment?.let { transaction.hide(it) }
+        mDiscoverFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }
     }
 
